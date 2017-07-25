@@ -1,0 +1,49 @@
+<App Background="#fff">
+	<DockPanel>
+
+		<JavaScript File="logic.js" />
+		<Font File="Assets/Fonts/RobotoCondensed-Bold.ttf" ux:Global="Bold" />
+		<Font File="Assets/Fonts/RobotoCondensed-Regular.ttf" ux:Global="Regular" />
+		<Font File="Assets/Fonts/RobotoCondensed-Light.ttf" ux:Global="Light" />
+
+		<StackPanel Dock="Top" Background="#79f">
+			<StatusBarBackground />
+			<Fuse.iOS.StatusBarConfig Style="Light" />
+			<Panel>
+				<Text Value="Movies" TextAlignment="Center" Color="#fff" Font="Bold" FontSize="24" Margin="0,10,0,5" />
+			</Panel>
+		</StackPanel>
+		
+		<BottomBarBackground Dock="Bottom" />
+		
+		<ScrollView>
+			<StackPanel>
+				<Each Items="{dataSource.movies}">
+					<Panel>
+						<PageControl Active="contents">
+							<Page Background="#fff" ux:Name="contents">
+								<DockPanel Margin="7,1,7,0">
+									<Image Url="{posters.thumbnail}" Dock="Left" Margin="7,7,0,7" Alignment="TopLeft" />
+
+									<StackPanel Margin="7,3,7,7">
+										<Text Font="Regular" Value="{title}" FontSize="16" />
+										<Text Font="Regular" Value="{year}" FontSize="16" Color="#999" />
+										<Text TextWrapping="Wrap" Font="Light" Value="{mpaa_rating}" FontSize="14" Color="#000" />
+									</StackPanel>
+								</DockPanel>
+							</Page>
+						</PageControl>
+
+						<Rectangle>
+							<SolidColor ux:Name="background" Color="#fff" />
+						</Rectangle>
+
+						<LayoutAnimation>
+							<Move RelativeTo="LayoutChange" Y="1" Duration="0.8" Easing="CircularInOut" />
+						</LayoutAnimation>
+					</Panel>
+				</Each>
+			</StackPanel>
+		</ScrollView>
+	</DockPanel>
+</App>
